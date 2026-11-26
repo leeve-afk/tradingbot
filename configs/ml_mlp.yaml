@@ -1,0 +1,18 @@
+# EXPLORATORY: ml_mlp (small neural-network ensemble) against ml_gbm on H1 bars, 2013-2024.
+# ml_mlp reuses ml_gbm's features, labels, weights, calibration and skill gate; only the model
+# family differs, so the two rows of this run compare boosted trees with an MLP like for like.
+# ml_gbm is the same trial as in configs/ml.yaml (identical config, so not a new trial); ml_mlp is new.
+# The 2025-26 holdout was already looked at once (trend_core, 2026-11-23): data stops at 2024.
+extends: default.yaml
+name: ml_mlp
+
+data:
+  end: "2024-12-31T23:59:59Z"
+
+strategies:
+  - {name: ml_mlp}
+  - {name: ml_gbm}
+
+walkforward:
+  holdout_start: null
+  n_trials: 35                    # 34 earlier trials + ml_mlp (DSR accounts for them)

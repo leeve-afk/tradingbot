@@ -121,6 +121,7 @@ def _ensure_loaded() -> None:
         "aurum.strategies.macro",
         "aurum.strategies.seasonal",
         "aurum.strategies.ml",
+        "aurum.strategies.ml_mlp",
         "aurum.strategies.rl",
         "aurum.strategies.allocation",
         "aurum.strategies.regime",

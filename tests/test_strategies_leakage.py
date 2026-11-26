@@ -51,7 +51,7 @@ OWNED_MODULES = (
     "aurum.strategies.allocation",
     "aurum.strategies.regime",
 )
-OTHER_MODULES = ("aurum.strategies.ml", "aurum.strategies.rl")
+OTHER_MODULES = ("aurum.strategies.ml", "aurum.strategies.ml_mlp", "aurum.strategies.rl")
 OWNED = frozenset({
     "tsmom", "ema_cross", "donchian", "kalman_trend", "zscore_fade", "rsi2", "bollinger_revert",
     "vol_squeeze", "orb", "macro_factor", "risk_off", "intraday_seasonality",
@@ -78,6 +78,9 @@ TEST_PARAMS: dict[str, dict[str, Any]] = {
                "feature_groups": ("returns", "momentum", "volatility")},
     "meta_label": {"skill_gate_z": None, "importance": "none",
                    "feature_groups": ("returns", "momentum", "volatility")},
+    "ml_mlp": {"skill_gate_z": None, "importance": "none",
+               "feature_groups": ("returns", "momentum", "volatility"),
+               "model": {"hidden_layer_sizes": (8,), "max_epochs": 10, "n_ensemble": 1}},
     "rl_ppo": {"min_val_bars": 200, "config": {
         "total_timesteps": 256, "n_envs": 1, "n_steps": 64, "batch_size": 32, "n_epochs": 1,
         "eval_freq": 128, "patience": None, "net_arch": [16],
