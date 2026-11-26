@@ -46,7 +46,7 @@ Until 2026-11-26 nothing in `aurum/` had been modified; everything added was a c
 - The news was fed in through the **existing** macro feature group, via `data.macro_dir`. The model code itself is unchanged.
 - **Paid step, NOT approved:** have Claude score headlines for sentiment. The estimate is about $2–5 with Haiku 5.5, or $50–100 with Opus 5.5 using the batch API. Do not run it without an explicit yes. It also carries a look-ahead risk: an LLM may remember later events.
 
-## Files we added (committed 2026-11-26 on branch `research/ml-mlp-news`; data, runs, cache, logs and graphify files stay local)
+## Files we added (committed 2026-11-26 to `main` of the fork `leeve-afk/tradingbot`; data, runs, cache, logs and graphify files stay local)
 - `configs/short_term.yaml`
 - `configs/ml.yaml`
 - `configs/ml_news_base.yaml`
@@ -74,7 +74,7 @@ Until 2026-11-26 nothing in `aurum/` had been modified; everything added was a c
 1. ~~Build `ml_mlp`~~ **Done 2026-11-26** (see above). The neural network found no more signal than the boosted trees: the validation AUCs sit around 0.5. The skill gate needs an AUC of roughly 0.57 or more, because overlapping 24-bar labels leave an effective validation sample of only about 220. Do not tune MLP variants on this same data hoping for a pass. Each variant is a new trial, and the AUC spread looks like noise.
 2. **CV write-up**: a 1–2 page research summary built from the real results above. Suggested bullet: "…adding daily GDELT news-attention and tone (sentiment) features to a gradient-boosting model…; no out-of-sample improvement under walk-forward validation with deflated Sharpe." A second bullet for the neural network: "…benchmarked a seed-averaged MLP ensemble (Gu–Kelly–Xiu design) against gradient boosting under an identical purged pipeline; neither cleared a significance gate on validation AUC…".
 3. **Finish the 8 missing GDELT series** on another network and rerun the news comparison.
-4. ~~Commit the work~~ **Done 2026-11-26**: branch `research/ml-mlp-news` was pushed to GitHub and still needs merging into `main`.
+4. ~~Commit the work~~ **Done 2026-11-26.** It is on `main` of the public fork `leeve-afk/tradingbot`, the repo `origin` points to. The original repo `zero-was-here/tradingbot` is the remote called `upstream` (MIT license; keep `LICENSE`).
 
 ## Terms to know for interviews
 - **Walk-forward validation:** train on a past window, test on the next unseen period, roll forward and repeat.
