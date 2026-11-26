@@ -1,0 +1,19 @@
+# EXPLORATORY: the five short-horizon strategies on H1 bars, 2013-2024.
+# The 2025-26 holdout was already looked at once (trend_core, 2026-11-23), so this config
+# stops the data at the end of 2024 and disables the holdout: running it cannot spend it again.
+extends: default.yaml
+name: short_term
+
+data:
+  end: "2024-12-31T23:59:59Z"
+
+strategies:
+  - {name: orb}
+  - {name: intraday_seasonality}
+  - {name: rsi2}
+  - {name: zscore_fade}
+  - {name: bollinger_revert}
+
+walkforward:
+  holdout_start: null
+  n_trials: 28                    # 23 pre-registered + these 5 new trials (DSR accounts for them)

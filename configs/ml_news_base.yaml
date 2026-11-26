@@ -1,0 +1,17 @@
+# EXPERIMENT (news idea), baseline arm: the ML strategies WITHOUT news, on the same window as
+# configs/ml_news.yaml (2017-2024: GDELT's daily timelines start in 2017). Compare the two.
+# The 2025-26 holdout was already looked at once (trend_core, 2026-11-23): data stops at 2024.
+extends: default.yaml
+name: ml_news_base
+
+data:
+  start: "2017-01-01"
+  end: "2024-12-31T23:59:59Z"
+
+strategies:
+  - {name: ml_gbm}
+  - {name: meta_label}
+
+walkforward:
+  holdout_start: null
+  n_trials: 34                    # 30 earlier trials + 2 strategies x 2 arms of this experiment

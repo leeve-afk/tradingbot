@@ -95,3 +95,6 @@ Thumbs.db
 # legacy v1 training outputs
 train/ppo_*.zip
 train/dreamer*/
+
+# graphify code map (large, regenerated locally with `graphify update .`)
+graphify-out/

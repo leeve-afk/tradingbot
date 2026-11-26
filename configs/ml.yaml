@@ -1,0 +1,16 @@
+# EXPLORATORY: the two machine-learning strategies on H1 bars, 2013-2024, default parameters.
+# The 2025-26 holdout was already looked at once (trend_core, 2026-11-23), so this config
+# stops the data at the end of 2024 and disables the holdout: running it cannot spend it again.
+extends: default.yaml
+name: ml
+
+data:
+  end: "2024-12-31T23:59:59Z"
+
+strategies:
+  - {name: ml_gbm}
+  - {name: meta_label}
+
+walkforward:
+  holdout_start: null
+  n_trials: 30                    # 23 pre-registered + 5 short_term + these 2 (DSR accounts for them)

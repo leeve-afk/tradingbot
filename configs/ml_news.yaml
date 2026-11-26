@@ -1,0 +1,10 @@
+# EXPERIMENT (news idea), news arm: identical to configs/ml_news_base.yaml except that the
+# macro directory also holds 12 daily GDELT news series (tools/news_gdelt.py): the share of
+# world news about gold / the Fed / inflation / the dollar / conflict / crisis, and its tone.
+# The ML strategies' `macro` feature group turns each into 1/5/20-day changes and a z-score,
+# point-in-time (a day's news is available at 01:00 UTC the next day).
+extends: ml_news_base.yaml
+name: ml_news
+
+data:
+  macro_dir: data_store/macro_news
